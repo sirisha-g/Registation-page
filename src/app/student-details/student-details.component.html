@@ -1,0 +1,121 @@
+<!-- <p>student-details works!</p> -->
+ <div calss="card h-100">
+    <div class="pagefit">
+        <div class="pagefit-head">
+
+        </div>
+        <div class="pagefit-body">
+    <div class="col-12">
+        <form [formGroup]="studentDetailsForm">
+        <div class="row">
+            <div class=" col-12 col-lg-3 col-xl-3 col-md-3 col-sm-6 mat-form-field-block">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Select Class</mat-label>
+                    <mat-select  formControlName="studentClass" appearance="outline"
+                    [disableOptionCentering]="true"
+                    >
+                    <mat-option *ngFor="let item of classes" [value]="item?.mnemonic">{{item.value}} </mat-option>
+                    </mat-select>
+                      <mat-error *ngIf="studentDetailsForm.get('studentClass')?.hasError('required')">
+                          Select Class is required
+                        </mat-error>
+                </mat-form-field>
+
+            </div>
+            <div class=" col-12 col-lg-3 col-xl-3 col-md-3 col-sm-6 mat-form-field-block">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Select Section</mat-label>
+                    <mat-select  formControlName="studentSection" appearance="outline"
+                    [disableOptionCentering]="true"
+                    >
+                    <mat-option *ngFor="let item of section" [value]="item?.mnemonic">{{item.value}} </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="studentDetailsForm.get('studentSection')?.hasError('required')">
+                        Select Section is required
+                      </mat-error>
+                </mat-form-field>
+
+            </div>
+            <div class=" col-12 col-lg-3 col-xl-3 col-md-3 col-sm-6 mat-form-field-block">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Select Student</mat-label>
+                    <mat-select  formControlName="student" appearance="outline"
+                    [disableOptionCentering]="true"
+                    >
+                    <mat-option *ngFor="let item of studentNames" [value]="item?.value">{{item.value}} </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="studentDetailsForm.get('student')?.hasError('required')">
+                        Select Student is required
+                      </mat-error>
+                </mat-form-field>
+
+            </div>
+            <div class=" col-lg-3 col-xl-3 col-md-6 col-sm-12 mb-2">
+                <mat-form-field appearance="outline" class="example-full-width">
+                  <mat-label>Reason</mat-label>
+                      <textarea matInput placeholder="Note"
+                      formControlName="reason" rows="1" cols="2"></textarea>
+                      <mat-error *ngIf="studentDetailsForm.get('reason')?.hasError('required')">
+                        Reason is required
+                      </mat-error>
+                </mat-form-field>
+          </div>
+          <div class="col-lg-3 col-lg-3 col-xl-3 col-md-6 col-sm-12 mb-2">
+            <div class="mat-form-field-block chkbox-control">
+                <mat-label>Number of Leaves Days:</mat-label>
+                <mat-radio-group formControlName="numberOfDays" aria-label="Select an option" >
+                  <mat-radio-button value="single">Single Day</mat-radio-button>
+                  <mat-radio-button value="multiple">Multiple Days </mat-radio-button>
+                </mat-radio-group>
+              </div>
+        </div>
+        <div class="col-lg-3 col-xl-3 col-md-3 col-sm-6 mat-form-field-block">
+            <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>Start Date</mat-label>
+                <input matInput [matDatepicker]="fromDatePicker" placeholder="MM/DD/YYYY"
+                    formControlName="startDate" 
+                     />
+                <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #fromDatePicker></mat-datepicker>
+                <mat-error *ngIf="studentDetailsForm.get('startDate')?.hasError('required')">
+                    Start Date is required
+                  </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3 col-xl-3 col-md-3 col-sm-6 mat-form-field-block">
+            <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>End Date</mat-label>
+                <input matInput [matDatepicker]="fromDatePicker1" placeholder="MM/DD/YYYY"
+                    formControlName="endDate" 
+                     />
+                <mat-datepicker-toggle matSuffix [for]="fromDatePicker1"></mat-datepicker-toggle>
+                <mat-datepicker #fromDatePicker1></mat-datepicker>
+                <mat-error *ngIf="studentDetailsForm.get('endDate')?.hasError('required')">
+                    End Date is required
+                  </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3 col-lg-3 col-xl-3 col-md-6 col-sm-12 mb-2">
+            <div class="mat-form-field-block chkbox-control">
+                <mat-label>Status:</mat-label>
+                <mat-radio-group formControlName="status" aria-label="Select an option" >
+                  <mat-radio-button value="approved">Approved</mat-radio-button>
+                  <mat-radio-button value="unapproved">Unapproved </mat-radio-button>
+                </mat-radio-group>
+              </div>
+        </div>
+
+        </div>
+        <div class="col-12 col-lg-12 col-xl-12 col-md-12 col-sm-12">
+            <button mat-raised-button color="accent" type="reset" (click)="clearData()">Clear</button>
+            <button mat-raised-button color="accent" type="submit"(click)="SaveStudentDetails()" [disabled]="!studentDetailsForm.valid">Save</button>
+        </div>
+    </form>
+    </div>
+</div>
+</div>
+<!-- </mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions> -->
+ </div>

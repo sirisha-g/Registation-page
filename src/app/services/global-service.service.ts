@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClientModule } from '@angular/common/http';
 
 
 @Injectable({
@@ -13,12 +12,14 @@ export class GlobalServiceService {
     'Content-Type': 'application/json',
   });
 
-  constructor(private http: HttpClient,private httpClientModule:HttpClientModule) { 
+  constructor(private http: HttpClient,private httpClient:HttpClient) { 
     
    }
+
+   
   
    saveLoginDetails(body: any): Observable<HttpResponse<any>> {
-    return this.http.post<any>(this.logInUrl, body, {
+    return this.httpClient.post<any>(this.logInUrl, body, {
       observe: 'response',
       headers: this.httpHeaders
     });
